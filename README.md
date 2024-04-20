@@ -16,3 +16,15 @@
 ![Slow Subscirber](/assets/slowsubs.png)
 
 In the queue message graph, there were approximately 35 messages queued. This occurs due to the subscriber requiring more time to process each event in the message queue. Consequently, a backlog of messages accumulates because the publisher can publish messages faster than the subscriber can handle them.
+
+- First subscriber 
+![1](/assets/1.png)
+- Second subscriber
+![2](/assets/2.png)
+- Third subscriber
+![3](/assets/3.png)
+![rabbit](/assets/rabbitmq.png)
+
+The sudden increase in the message queue probably because we added a sleep function (thread::sleep(ten_millis);) in the subscriber's main.rs file. This function waits for 1000 milliseconds (1 second) before printing each message. So, messages get more time to be handled one after the other, which helps clear out the backlog in the queue.
+
+My suggestion is to apply an asynchronous processing
